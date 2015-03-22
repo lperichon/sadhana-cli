@@ -19,6 +19,12 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['simple-auth-devise'] = {
+    resourceName: 'user',
+    identificationAttributeName: 'email',
+    authorizer: 'simple-auth-authorizer:devise'
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

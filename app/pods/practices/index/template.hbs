@@ -1,0 +1,14 @@
+{{#link-to 'practices.new' class="right btn"}}New Practice{{/link-to}}
+
+<ul>
+  {{#each}}
+    <li class="practice">
+      {{#link-to 'practices.show' this}}
+        {{name}}
+      {{/link-to}}
+      {{link-to 'Edit' 'practices.edit' book class="btn btn-sm btn-primary"}}
+    </li>
+  {{else}}
+    <li>No practices found.</li>
+  {{/each}}
+</ul>

@@ -1,14 +1,52 @@
-{{#link-to 'practices.new' class="right btn"}}New Practice{{/link-to}}
-
-<ul>
-  {{#each}}
-    <li class="practice">
-      {{#link-to 'practices.show' this}}
-        {{name}}
-      {{/link-to}}
-      {{link-to 'Edit' 'practices.edit' book class="btn btn-sm btn-primary"}}
-    </li>
+  {{#each practice in model}}
+    <div class="well practice">
+      <div class="practice-body">
+    	<h4 class="practice-heading">{{practice.name}}</h4>
+        <p class="pull-right">By Francisco</p>
+        <p>{{practice.description}}</p>
+        <ul class="list-inline list-unstyled practice-footer">
+          <li><span><i class="fa fa-clock-o"></i> 1 hour 15 minutes </span></li>
+          <li>|</li>
+          <span><i class="fa fa-comment"></i> 2 comments</span>
+          <li>|</li>
+          <li>
+            <span><i class="fa fa-star"></i></span>
+            <span><i class="fa fa-star"></i></span>
+            <span><i class="fa fa-star"></i></span>
+            <span><i class="fa fa-star"></i></span>
+            <span><i class="fa fa-star"></i></span>
+          </li>
+          <li>|</li>
+          <li>
+            <span><i class="fa fa-facebook-square social-share"></i></span>
+            <span><i class="fa fa-twitter-square social-share"></i></span>
+            <span><i class="fa fa-google-plus-square social-share"></i></span>
+          </li>
+          <li>|</li>
+          <li>
+		    <button type="button" class="btn btn-default">Play</button>
+		  </li>
+          <li>
+          <!-- Split button -->
+			<div class="btn-group">
+			  {{#link-to 'practices.show' practice classNames="btn btn-default"}}View{{/link-to}}
+			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			    <span class="caret"></span>
+			    <span class="sr-only">Toggle Dropdown</span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu">
+			    <li><a href="#">Edit</a></li>
+			    <li><a href="#">Duplicate</a></li>
+			    <li><a href="#">Publish</a></li>
+			    <li><a href="#">Delete</a></li>
+			    <li class="divider"></li>
+			    <li><a href="#">Play</a></li>
+			  </ul>
+			</div>
+		  </li>
+		</ul>
+	  </div>
+    </div>
   {{else}}
-    <li>No practices found.</li>
+    <div>No practices found.</div>
   {{/each}}
-</ul>

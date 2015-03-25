@@ -1,4 +1,9 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
+import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixin';
+
+export default Ember.Route.extend(AuthenticatedRouteMixin, {
+  model: function(params) {
+    return this.store.find('practice', params.id)
+  }
 });

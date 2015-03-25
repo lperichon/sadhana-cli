@@ -1,6 +1,12 @@
 <h3>{{name}}</h3>
 <p>{{description}}</p>
 
-
+<ul>
+{{#each practicePart in practiceParts}}
+  <li>{{practicePart.position}} - {{practicePart.part.symbol}}</li>
+{{else}}
+  <div>Empty practice</div>
+{{/each}}
+</ul>
 <br/>
-<p> {{#link-to 'practices'}}return to list{{/link-to}} </p>
+<p> {{#link-to 'practices.index'}}return to list{{/link-to}} </p>

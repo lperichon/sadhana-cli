@@ -1,12 +1,20 @@
 <h3>{{name}}</h3>
 <p>{{description}}</p>
 
-<ul>
-{{#each practicePart in practiceParts}}
-  <li>{{practicePart.position}} - {{practicePart.part.symbol}}</li>
-{{else}}
-  <div>Empty practice</div>
-{{/each}}
-</ul>
-<br/>
-<p> {{#link-to 'practices.index'}}return to list{{/link-to}} </p>
+{{#dc-tabs selected-index=tab_idx}}
+  {{#dc-tab-list}}
+    {{#each practicePart in practiceParts}}
+      {{#dc-tab}}{{practicePart.part.symbol}}{{/dc-tab}}
+    {{/each}}
+  {{/dc-tab-list}}
+
+  {{#each practicePart in practiceParts}}
+    {{#dc-tab-panel}}
+      <ul class="practice-techniques">
+      {{#each practiceTechnique in practicePart.practiceTechniques}}
+        <li class="practice-technique well">{{practiceTechnique.id}}</li>
+      {{/each}}
+      </ul>
+    {{/dc-tab-panel}}
+  {{/each}}
+{{/dc-tabs}}

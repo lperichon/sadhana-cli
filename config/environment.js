@@ -53,7 +53,8 @@ module.exports = function(environment) {
 
   ENV['simple-auth'] = {
     crossOriginWhitelist: [ENV.APP.API_HOST],
-    authorizer: 'simple-auth-authorizer:devise'
+    authorizer: 'simple-auth-authorizer:devise',
+    routeAfterAuthentication: 'practices'
   }
 
   ENV.contentSecurityPolicy = {

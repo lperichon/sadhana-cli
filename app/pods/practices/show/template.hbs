@@ -12,7 +12,7 @@
     {{#dc-tab-panel}}
       <ul class="practice-techniques">
       {{#each practiceTechnique in practicePart.practiceTechniques}}
-        <li class="practice-technique well">{{practiceTechnique.id}}</li>
+        <li class="practice-technique well"><img {{bind-attr src="practiceTechnique.technique.thumbUrl"}}></li>
       {{/each}}
       </ul>
     {{/dc-tab-panel}}

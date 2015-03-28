@@ -58,7 +58,8 @@ module.exports = function(environment) {
   }
 
   ENV.contentSecurityPolicy = {
-    'connect-src': "'self' " + ENV.APP.API_HOST
+    'connect-src': "'self' " + ENV.APP.API_HOST,
+    'img-src': "'self' http://s3.amazonaws.com"
   }
 
   return ENV;

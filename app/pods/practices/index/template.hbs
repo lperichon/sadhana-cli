@@ -1,8 +1,10 @@
   {{#each practice in model}}
     <div class="well practice">
-      <div class="practice-body">
-    	<h4 class="practice-heading">{{practice.name}}</h4>
+      <div class="practice-heading">
+        <h4 class="pull-left">{{practice.name}}</h4>
         <p class="pull-right">By Francisco</p>
+      </div>
+      <div class="practice-body">
         <p>{{practice.description}}</p>
         <ul class="list-inline list-unstyled practice-footer">
           <li><span><i class="fa fa-clock-o"></i> 1 hour 15 minutes </span></li>

@@ -1,0 +1,16 @@
+<h3>{{name}}</h3>
+<div id="player">
+  <div id="current-step" class="well">
+    <img {{bind-attr src="currentPracticeTechnique.technique.imageUrl"}}>
+  </div>
+  <div id="next-step" class="well">
+    <img {{bind-attr src="nextPracticeTechnique.technique.thumbUrl"}}>
+  </div>
+  <div id="controls">
+    <a {{ action 'prevStep' }} class="btn btn-default">Back</a>
+    <button id="start">Start</button> 
+    <input id="clock" value="10:00">
+    <button id="stop">Stop</button>
+    <a {{ action 'nextStep' }} class="btn btn-default">Next</a>
+  </div>
+</div>

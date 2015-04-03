@@ -50,7 +50,7 @@ export default Ember.ObjectController.extend({
         this.set('step', prevStep);
 	  },
 	  completedTimer: function() {
-	  	console.log("Time's up!");
+	  	this.send('nextStep');
 	  }
 	}
 });

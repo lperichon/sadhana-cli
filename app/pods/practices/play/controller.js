@@ -48,6 +48,9 @@ export default Ember.ObjectController.extend({
       	  prevStep = step - 1;
         }
         this.set('step', prevStep);
+	  },
+	  completedTimer: function() {
+	  	console.log("Time's up!");
 	  }
 	}
 });

@@ -8,9 +8,7 @@
   </div>
   <div id="controls">
     <a {{ action 'prevStep' }} class="btn btn-default">Back</a>
-    <button id="start">Start</button> 
-    <input id="clock" value="10:00">
-    <button id="stop">Stop</button>
+    {{ countdown-timer value="00:10" action='completedTimer' }}
     <a {{ action 'nextStep' }} class="btn btn-default">Next</a>
   </div>
 </div>

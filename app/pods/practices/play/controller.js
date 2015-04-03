@@ -30,6 +30,13 @@ export default Ember.ObjectController.extend({
       }
 	  return nextPracticeTechnique;
 	}.property('step'),
+	timerValue: function() {
+	  var minutes = this.get('currentPracticeTechnique').get('minutes');
+	  var minutes_str = minutes < 10 ? '0' + minutes.toString() : minutes.toString();
+	  var seconds = this.get('currentPracticeTechnique').get('seconds');
+	  var seconds_str = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
+	  return minutes_str + ':' + seconds_str;
+	}.property('step'),
 	actions: {
 	  nextStep: function(){
   	    // avoid step numbers > practiceTechniques.length

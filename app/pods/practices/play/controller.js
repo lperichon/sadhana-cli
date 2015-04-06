@@ -43,7 +43,7 @@ export default Ember.ObjectController.extend({
 	  var seconds = this.get('currentPracticeTechnique').get('seconds');
 	  var seconds_str = seconds < 10 ? '0' + seconds.toString() : seconds.toString();
 	  return minutes_str + ':' + seconds_str;
-	}.property('step'),
+	}.property('currentPracticeTechnique'),
 	actions: {
 	  nextStep: function(){
   	    // avoid step numbers > practiceTechniques.length
@@ -65,6 +65,9 @@ export default Ember.ObjectController.extend({
 	  },
 	  completedTimer: function() {
 	  	this.send('nextStep');
+	  	// FIX: This breaks separation of concerns, only the component should 
+	  	// know about #clock.
+	  	$('#clock').val(this.get('timerValue'));
 	  }
 	}
 });

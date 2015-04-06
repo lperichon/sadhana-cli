@@ -7,7 +7,14 @@ export default Ember.ObjectController.extend({
       var practiceTechniques = [];
 	  var practiceParts = this.get('practiceParts').toArray();
 	  practiceParts.forEach( function(practicePart) {
-	  	Array.prototype.push.apply(practiceTechniques, practicePart.get('practiceTechniques').toArray());
+	  	var practicePartTechniques = practicePart.get('practiceTechniques').toArray();
+	  	practicePartTechniques.forEach ( function(practiceTechnique) {
+	  		practiceTechniques.push(practiceTechnique);
+	  		// Add a duplicate for compensation
+	  		if(practiceTechnique.get('compensate')) {
+	  			practiceTechniques.push(practiceTechnique);
+	  		}
+	  	});
 	  });
 	  return practiceTechniques;
 	}.property('practiceParts.@each'),

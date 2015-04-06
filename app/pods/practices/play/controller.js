@@ -26,6 +26,15 @@ export default Ember.ObjectController.extend({
       step = step >= this.get('practiceTechniques').length ? this.get('practiceTechniques').length-1 : step;
 	  return this.get('practiceTechniques')[step];
 	}.property('step'),
+	currentPracticeTechniqueIsCompensation: function() {
+	  var step = this.get('step');
+	  // avoid step numbers to be trolled i.e.: step=string, step=-1, step=1.23
+      step = isNaN(step) ? 0 : Math.floor(Math.abs(step));
+      // avoid step numbers > practiceTechniques.length
+      step = step >= this.get('practiceTechniques').length ? this.get('practiceTechniques').length-1 : step;
+
+      return step != 0 && this.get('practiceTechniques')[step] == this.get('practiceTechniques')[step-1]
+	}.property('step'),
 	nextPracticeTechnique: function() {
 	  var step = this.get('step');
 	  // avoid step numbers to be trolled i.e.: step=string, step=-1, step=1.23
@@ -36,6 +45,15 @@ export default Ember.ObjectController.extend({
       	nextPracticeTechnique = this.get('practiceTechniques')[step+1];
       }
 	  return nextPracticeTechnique;
+	}.property('step'),
+	nextPracticeTechniqueIsCompensation: function() {
+	  var step = this.get('step');
+	  // avoid step numbers to be trolled i.e.: step=string, step=-1, step=1.23
+      step = isNaN(step) ? 0 : Math.floor(Math.abs(step));
+      // avoid step numbers > practiceTechniques.length
+      step = step >= this.get('practiceTechniques').length ? this.get('practiceTechniques').length-1 : step;
+
+      return this.get('practiceTechniques')[step] == this.get('practiceTechniques')[step+1]
 	}.property('step'),
 	timerValue: function() {
 	  var minutes = this.get('currentPracticeTechnique').get('minutes');

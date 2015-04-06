@@ -1,10 +1,10 @@
 <h3>{{name}}</h3>
 <div id="player">
   <div id="current-step" class="well">
-    <img {{bind-attr src="currentPracticeTechnique.technique.imageUrl"}}>
+    <img {{bind-attr src="currentPracticeTechnique.technique.imageUrl"}} {{bind-attr class="currentPracticeTechniqueIsCompensation:is-compensation"}} >
   </div>
   <div id="next-step" class="well">
-    <img {{bind-attr src="nextPracticeTechnique.technique.thumbUrl"}}>
+    <img {{bind-attr src="nextPracticeTechnique.technique.thumbUrl"}} {{bind-attr class="nextPracticeTechniqueIsCompensation:is-compensation"}} >
   </div>
   <div id="controls">
     <a {{ action 'prevStep' }} class="btn btn-default">Back</a>

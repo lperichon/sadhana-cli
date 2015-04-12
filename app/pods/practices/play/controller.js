@@ -33,7 +33,7 @@ export default Ember.ObjectController.extend({
       // avoid step numbers > practiceTechniques.length
       step = step >= this.get('practiceTechniques').length ? this.get('practiceTechniques').length-1 : step;
 
-      return step != 0 && this.get('practiceTechniques')[step] == this.get('practiceTechniques')[step-1]
+      return step !== 0 && this.get('practiceTechniques')[step] === this.get('practiceTechniques')[step-1];
 	}.property('step'),
 	nextPracticeTechnique: function() {
 	  var step = this.get('step');
@@ -53,7 +53,7 @@ export default Ember.ObjectController.extend({
       // avoid step numbers > practiceTechniques.length
       step = step >= this.get('practiceTechniques').length ? this.get('practiceTechniques').length-1 : step;
 
-      return this.get('practiceTechniques')[step] == this.get('practiceTechniques')[step+1]
+      return this.get('practiceTechniques')[step] === this.get('practiceTechniques')[step+1];
 	}.property('step'),
 	timerValue: function() {
 	  var minutes = this.get('currentPracticeTechnique').get('minutes');

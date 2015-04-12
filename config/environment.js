@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'sadhana-cli',
+    podModulePrefix: 'sadhana-cli/pods',
     environment: environment,
     baseURL: '/',
     defaultLocationType: 'auto',
@@ -30,6 +31,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.API_HOST = 'http://localhost:3000'
   }
 
   if (environment === 'test') {
@@ -46,6 +48,23 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
 
+  }
+
+  ENV['simple-auth-devise'] = {
+    resourceName: 'user',
+    identificationAttributeName: 'email',
+    serverTokenEndpoint: ENV.APP.API_HOST + '/users/sign_in'
+  };
+
+  ENV['simple-auth'] = {
+    crossOriginWhitelist: [ENV.APP.API_HOST],
+    authorizer: 'simple-auth-authorizer:devise',
+    routeAfterAuthentication: 'practices'
+  }
+
+  ENV.contentSecurityPolicy = {
+    'connect-src': "'self' " + ENV.APP.API_HOST,
+    'img-src': "'self' http://s3.amazonaws.com"
   }
 
   return ENV;

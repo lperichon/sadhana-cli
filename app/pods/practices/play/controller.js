@@ -85,7 +85,7 @@ export default Ember.ObjectController.extend({
 	  	this.send('nextStep');
 	  	// FIX: This breaks separation of concerns, only the component should 
 	  	// know about #clock.
-	  	$('#clock').val(this.get('timerValue'));
+	  	Ember.$('#clock').val(this.get('timerValue'));
 	  }
 	}
 });

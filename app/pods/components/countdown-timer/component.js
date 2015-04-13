@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   action: 'completedTimer',
   init: function() {
-    self = this;
+    var self = this;
     this._super();
     this.set('timer', new Tock({
       countdown: true,

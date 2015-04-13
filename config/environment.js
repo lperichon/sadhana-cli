@@ -64,7 +64,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.APP.API_HOST = 'http://sadhana-api.herokuapp.com'
   }
 
   ENV['simple-auth-devise'] = {

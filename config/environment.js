@@ -1,5 +1,17 @@
 /* jshint node: true */
 
+var os     = require('os');
+var ifaces = os.networkInterfaces();
+
+var addresses = [];
+for (var dev in ifaces) {
+  ifaces[dev].forEach(function(details){
+    if(details.family === 'IPv4' && details.address !== '127.0.0.1') {
+      addresses.push(details.address);
+    }
+  });
+}
+
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'sadhana-cli',
@@ -21,7 +33,12 @@ module.exports = function(environment) {
 
     cordova: {
       rebuildOnChange: false,
-      emulate: false
+      emulate: false,
+      emberUrl: 'http://' + addresses[0] + ':4200',
+      liveReload: {
+        enabled: true,
+        platform: 'android'
+      }
     }
   };
 
